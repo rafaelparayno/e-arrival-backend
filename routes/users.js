@@ -5,6 +5,7 @@ const router = express.Router();
 const bcrpyt = require("bcryptjs");
 const Useraccounts = require("../models/Useraccount");
 const jwt = require("jsonwebtoken");
+const client = require("../helpers/init_redis");
 
 //const auth = require('../middleware/auth');
 const { Op } = require("sequelize");
