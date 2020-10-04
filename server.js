@@ -8,6 +8,10 @@ db.authenticate()
 
 app.use(express.json());
 
+app.get("/", (req, res) => res.send("Index"));
+
+app.use("/users", require("./routes/users"));
+
 app.use(async (req, res, next) => {
   const error = new Error("not Found");
   error.status = 404;
@@ -24,10 +28,6 @@ app.use((err, req, res, next) => {
     },
   });
 });
-
-app.get("/", (req, res) => res.send("Index"));
-
-app.use("/users", require("./routes/users"));
 
 const PORT = process.env.PORT || 5000;
 
