@@ -15,13 +15,47 @@ module.exports = {
       if (roleid !== 1)
         return res.status(401).send({ message: "Forbidden access" });
 
-      const users = await Useraccounts.findAll({
+      let { q } = req.query;
+      let filter = {
         where: {
           [Op.not]: [{ role_id: 3 }],
         },
-      });
+      };
+
+      if (q) {
+        filter = {
+          where: {
+            [Op.not]: [{ role_id: 3 }],
+            firstname: { [Op.like]: `${q}%` },
+          },
+        };
+      }
+
+      const users = await Useraccounts.findAll(filter);
 
       res.status(200).json(users);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
+  findByID: async (req, res) => {
+    if (!req.user) return res.status(401).send({ message: "Forbidden access" });
+
+    try {
+      const roleid = await getRole(req.user.username);
+
+      if (roleid !== 1)
+        return res.status(401).send({ message: "Forbidden access" });
+
+      let { id } = req.params;
+
+      const userFound = await Useraccounts.findByPk(id);
+
+      if (userFound) {
+        res.status(200).json(userFound);
+      } else {
+        res.status(404).send();
+      }
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
