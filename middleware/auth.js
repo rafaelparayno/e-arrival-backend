@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const jwt = require("jsonwebtoken");
+const client = require("../helpers/init_redis");
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
@@ -10,8 +11,15 @@ function authenticateToken(req, res, next) {
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
+    const userjwt = user;
+
+    client.GET(userjwt.username, (err, result) => {
+      if (err) return res.status(500).json({ message: err.message });
+
+      if (result) req.user = userjwt;
+      next();
+      return;
+    });
   });
 }
 

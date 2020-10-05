@@ -6,7 +6,18 @@ const { Op } = require("sequelize");
 
 module.exports = {
   showUsers: async (req, res) => {
+    if (!req.user) return res.status(401).send({ message: "Forbidden access" });
+
     try {
+      const user = await Useraccounts.findOne({
+        where: {
+          username: req.user.username,
+        },
+      });
+
+      if (user.role_id !== 1)
+        return res.status(401).send({ message: "Forbidden access" });
+
       const users = await Useraccounts.findAll({
         where: {
           [Op.not]: [{ role_id: 3 }],
@@ -56,10 +67,8 @@ module.exports = {
 
           res.json({ accessToken: accessToken, refreshToken: refreshToken });
         });
-
-        // res.json({ accessToken: accessToken, refreshToken: refreshToken });
       } else {
-        res.send("not allowed");
+        res.status(401).json({ message: "Password not valid" });
       }
     } catch (err) {
       res.status(500).json({ message: err.message });
@@ -99,12 +108,12 @@ module.exports = {
 
 function generateAccessToken(user) {
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "15m",
+    expiresIn: "30s",
   });
 }
 
 function generateRefreshToken(user) {
   return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {
-    expiresIn: "15m",
+    expiresIn: "30s",
   });
 }
