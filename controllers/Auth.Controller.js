@@ -3,19 +3,16 @@ const Useraccounts = require("../models/Useraccount");
 const client = require("../helpers/init_redis");
 const jwt = require("jsonwebtoken");
 const { Op } = require("sequelize");
+const getRole = require("../helpers/getting_role");
 
 module.exports = {
   showUsers: async (req, res) => {
     if (!req.user) return res.status(401).send({ message: "Forbidden access" });
 
     try {
-      const user = await Useraccounts.findOne({
-        where: {
-          username: req.user.username,
-        },
-      });
+      const roleid = await getRole(req.user.username);
 
-      if (user.role_id !== 1)
+      if (roleid !== 1)
         return res.status(401).send({ message: "Forbidden access" });
 
       const users = await Useraccounts.findAll({
@@ -30,6 +27,8 @@ module.exports = {
     }
   },
   addUser: async (req, res) => {
+    if (!req.user) return res.status(401).send({ message: "Forbidden access" });
+
     const hashedPasswored = await bcrpyt.hash(req.body.password, 10);
 
     const data = {
@@ -42,6 +41,10 @@ module.exports = {
     };
 
     try {
+      const roleid = await getRole(req.user.username);
+      if (roleid !== 1)
+        return res.status(401).send({ message: "Forbidden access" });
+
       const newUsers = await Useraccounts.create(data);
       res.status(201).json(newUsers);
     } catch (err) {
@@ -108,12 +111,12 @@ module.exports = {
 
 function generateAccessToken(user) {
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "30s",
+    expiresIn: "15m",
   });
 }
 
 function generateRefreshToken(user) {
   return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {
-    expiresIn: "30s",
+    expiresIn: "15m",
   });
 }
