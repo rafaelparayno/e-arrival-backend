@@ -65,4 +65,13 @@ module.exports = {
     res.shippingAgent = shippingAgent;
     next();
   },
+  deleteAgent: async (req, res) => {
+    try {
+      await res.shippingAgent.destroy();
+
+      res.json({ message: "Deleted shipping agent" });
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  },
 };

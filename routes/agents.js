@@ -14,4 +14,11 @@ router.patch(
   AgentController.updateAgent
 );
 
+router.delete(
+  "/:id",
+  auth.authenticateToken,
+  AgentController.getShippingAgent,
+  AgentController.deleteAgent
+);
+
 module.exports = router;
