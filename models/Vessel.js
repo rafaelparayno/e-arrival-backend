@@ -10,6 +10,12 @@ const Vessel = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      field: "vessel_name",
+      type: DataTypes.STRING,
+      require: true,
+      allowNull: false,
+    },
     vessel_flag: {
       type: DataTypes.INTEGER,
       allowNull: false,

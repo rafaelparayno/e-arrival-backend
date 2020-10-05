@@ -15,4 +15,38 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  const {
+    vessel_name,
+    vessel_flag,
+    imonumber,
+    GRT,
+    DWT,
+    NRT,
+    LOA,
+    breadth,
+    callsign,
+    shipping_agent_id,
+  } = req.body;
+
+  try {
+    const newVessels = await Vessels.create({
+      name: vessel_name,
+      vessel_flag,
+      imonumber,
+      GRT,
+      DWT,
+      NRT,
+      LOA,
+      breadth,
+      callsign,
+      shipping_agent_id,
+    });
+
+    res.status(201).json(newVessels);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+});
+
 module.exports = router;
