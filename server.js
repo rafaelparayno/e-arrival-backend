@@ -12,6 +12,8 @@ app.get("/", (req, res) => res.send("Index"));
 
 app.use("/users", require("./routes/users"));
 
+app.use("/agents", require("./routes/agents"));
+
 app.use(async (req, res, next) => {
   const error = new Error("not Found");
   error.status = 404;

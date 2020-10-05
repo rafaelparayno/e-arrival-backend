@@ -5,6 +5,7 @@ const Agent = db.define("shipping_agent", {
   shipping_agent_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
   },
   e_add: {
     type: DataTypes.STRING,
@@ -21,4 +22,3 @@ const Agent = db.define("shipping_agent", {
 });
 
 module.exports = Agent;
-module.exports = Useraccount;
