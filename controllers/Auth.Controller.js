@@ -2,7 +2,7 @@ const bcrpyt = require("bcryptjs");
 const Useraccounts = require("../models/Useraccount");
 const client = require("../helpers/init_redis");
 const jwt = require("jsonwebtoken");
-const { Op } = require("sequelize");
+const { Op, fn, col, where } = require("sequelize");
 const getRole = require("../helpers/getting_role");
 
 module.exports = {
@@ -26,7 +26,12 @@ module.exports = {
         filter = {
           where: {
             [Op.not]: [{ role_id: 3 }],
-            firstname: { [Op.like]: `${q}%` },
+            [Op.or]: [
+              where(fn("concat", col("firstname"), " ", col("lastname")), {
+                [Op.like]: `%${q}%`,
+              }),
+              { username: { [Op.like]: `%${q}%` } },
+            ],
           },
         };
       }
