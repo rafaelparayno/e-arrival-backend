@@ -11,6 +11,10 @@ const Agent = db.define("shipping_agent", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  shipping_agent_name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   contact_person: {
     type: DataTypes.STRING,
     allowNull: false,
