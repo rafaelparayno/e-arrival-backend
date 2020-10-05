@@ -1,8 +1,10 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const db = require("../config/database");
+const Vessel = require("./Vessel");
 
 const Agent = db.define("shipping_agent", {
-  shipping_agent_id: {
+  id: {
+    field: "shipping_agent_id",
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -23,6 +25,14 @@ const Agent = db.define("shipping_agent", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+});
+
+Agent.hasMany(Vessel, {
+  foreignKey: "shipping_agent_id",
+});
+
+Vessel.belongsTo(Agent, {
+  foreignKey: "shipping_agent_id",
 });
 
 module.exports = Agent;
