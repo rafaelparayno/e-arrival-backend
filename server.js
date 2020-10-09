@@ -16,6 +16,8 @@ app.use("/agents", require("./routes/agents"));
 
 app.use("/vessels", require("./routes/vessels"));
 
+app.use("/crews", require("./routes/crews"));
+
 app.use(async (req, res, next) => {
   const error = new Error("not Found");
   error.status = 404;
