@@ -1,13 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const CrewController = require("../controllers/Crew.Controller");
+const auth = require("../middleware/auth");
 
-router.get("/", CrewController.getAllCrew);
+router.get("/", auth.authenticateToken, CrewController.getAllCrew);
 
-router.post("/", CrewController.addCrew);
+router.post("/", auth.authenticateToken, CrewController.addCrew);
 
-router.patch("/:id", CrewController.getCrew, CrewController.updateCrew);
+router.patch(
+  "/:id",
+  auth.authenticateToken,
+  CrewController.getCrew,
+  CrewController.updateCrew
+);
 
-router.delete("/:id", CrewController.getCrew, CrewController.deleteCrew);
+router.delete(
+  "/:id",
+  auth.authenticateToken,
+  CrewController.getCrew,
+  CrewController.deleteCrew
+);
 
 module.exports = router;
