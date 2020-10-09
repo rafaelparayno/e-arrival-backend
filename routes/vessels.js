@@ -1,52 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const Vessels = require("../models/Vessel");
-const ShippingAgent = require("../models/ShippingAgent");
+const VesselController = require("../controllers/Vessel.Controller");
+const auth = require("../middleware/auth");
 
-router.get("/", async (req, res) => {
-  try {
-    const vessels = await Vessels.findAll({
-      include: [ShippingAgent],
-    });
+router.get("/", auth.authenticateToken, VesselController.getAllVessel);
 
-    res.status(200).json(vessels);
-  } catch (err) {
-    res.status(500).send();
-  }
-});
+router.post("/", auth.authenticateToken, VesselController.addVessels);
 
-router.post("/", async (req, res) => {
-  const {
-    vessel_name,
-    vessel_flag,
-    imonumber,
-    GRT,
-    DWT,
-    NRT,
-    LOA,
-    breadth,
-    callsign,
-    shipping_agent_id,
-  } = req.body;
+router.patch(
+  "/:id",
+  auth.authenticateToken,
+  VesselController.getVessel,
+  VesselController.updateVessel
+);
 
-  try {
-    const newVessels = await Vessels.create({
-      name: vessel_name,
-      vessel_flag,
-      imonumber,
-      GRT,
-      DWT,
-      NRT,
-      LOA,
-      breadth,
-      callsign,
-      shipping_agent_id,
-    });
-
-    res.status(201).json(newVessels);
-  } catch (err) {
-    res.status(500).send({ message: err.message });
-  }
-});
+router.delete(
+  "/:id",
+  auth.authenticateToken,
+  VesselController.getVessel,
+  VesselController.deleteVessel
+);
 
 module.exports = router;
