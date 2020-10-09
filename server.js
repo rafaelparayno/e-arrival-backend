@@ -20,6 +20,8 @@ app.use("/crews", require("./routes/crews"));
 
 app.use("/bookings", require("./routes/booking"));
 
+app.use("/arrivals", require("./routes/arrival"));
+
 app.use(async (req, res, next) => {
   const error = new Error("not Found");
   error.status = 404;
