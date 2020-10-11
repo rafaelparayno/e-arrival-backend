@@ -7,6 +7,8 @@ router.get("/", auth.authenticateToken, CrewController.getAllCrew);
 
 router.post("/", auth.authenticateToken, CrewController.addCrew);
 
+router.post("/vessel", auth.authenticateToken, CrewController.getVesselCrew);
+
 router.patch(
   "/:id",
   auth.authenticateToken,
