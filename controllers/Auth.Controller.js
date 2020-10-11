@@ -12,11 +12,12 @@ module.exports = {
     try {
       const roleid = await getRole(req.user.username);
 
-      if (roleid !== 1)
+      if (roleid === 0)
         return res.status(401).send({ message: "Forbidden access" });
 
       let { q } = req.query;
       let filter = {
+        attributes: { exclude: ["password"] },
         where: {
           [Op.not]: [{ role_id: 3 }],
         },
@@ -24,6 +25,7 @@ module.exports = {
 
       if (q) {
         filter = {
+          attributes: { exclude: ["password"] },
           where: {
             [Op.not]: [{ role_id: 3 }],
             [Op.or]: [
@@ -76,12 +78,12 @@ module.exports = {
       lastname: req.body.lastname,
       username: req.body.username,
       password: hashedPasswored,
-      role_id: 0,
+      role_id: req.body.role_id,
     };
 
     try {
       const roleid = await getRole(req.user.username);
-      if (roleid !== 1)
+      if (roleid === 0)
         return res.status(401).send({ message: "Forbidden access" });
 
       const newUsers = await Useraccounts.create(data);
@@ -93,6 +95,11 @@ module.exports = {
   login: async (req, res) => {
     try {
       const user = await Useraccounts.findOne({
+        attributes: {
+          include: [
+            [fn("concat", col("firstname"), " ", col("lastname")), "fullname"],
+          ],
+        },
         where: {
           username: req.body.username,
         },
@@ -103,11 +110,17 @@ module.exports = {
       if (await bcrpyt.compare(req.body.password, user.password)) {
         const accessToken = generateAccessToken({ username: user.username });
         const refreshToken = generateRefreshToken({ username: user.username });
+        const { fullname } = user;
 
         client.SETEX(user.username, 1800 * 60, refreshToken, (err, reply) => {
           if (err) return res.status(500).send({ message: err.message });
 
-          res.json({ accessToken: accessToken, refreshToken: refreshToken });
+          res.json({
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+            role: user.role_id,
+            username: user.username,
+          });
         });
       } else {
         res.status(401).json({ message: "Password not valid" });
@@ -115,6 +128,56 @@ module.exports = {
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
+  },
+  updateUser: async (req, res) => {
+    const { firstname, middlename, lastname, username, role_id } = req.body;
+
+    if (firstname != null) {
+      res.user.firstname = firstname;
+    }
+
+    if (middlename != null) {
+      res.user.middlename = middlename;
+    }
+
+    if (lastname != null) {
+      res.user.lastname = lastname;
+    }
+    if (username != null) {
+      res.user.username = username;
+    }
+
+    if (role_id != null) {
+      res.user.role_id = role_id;
+    }
+
+    try {
+      const updateduser = await res.user.save();
+      res.json(updateduser);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  },
+  deleteUser: async (req, res) => {
+    try {
+      await res.user.destroy();
+
+      res.json({ message: "Deleted user" });
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  },
+  getUser: async (req, res, next) => {
+    let user;
+    try {
+      user = await Useraccounts.findByPk(req.params.id);
+      if (user == null)
+        return res.status(404).json({ message: "cannot find user" });
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+    res.user = user;
+    next();
   },
   refreshToken: async (req, res) => {
     try {

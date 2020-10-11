@@ -1,10 +1,15 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 const db = require("./config/database");
+
+
 
 db.authenticate()
   .then(() => console.log("database connected..."))
   .catch((err) => console.log("error message :" + err));
+
+app.use(cors());
 
 app.use(express.json());
 

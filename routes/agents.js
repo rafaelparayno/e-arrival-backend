@@ -5,6 +5,13 @@ const auth = require("../middleware/auth");
 
 router.get("/", auth.authenticateToken, AgentController.showAllAgents);
 
+router.get(
+  "/:id",
+  auth.authenticateToken,
+  AgentController.getShippingAgent,
+  AgentController.getSingleData
+);
+
 router.post("/", auth.authenticateToken, AgentController.addAgent);
 
 router.patch(

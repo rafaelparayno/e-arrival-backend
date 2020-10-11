@@ -1,5 +1,6 @@
 const Vessels = require("../models/Vessel");
 const ShippingAgent = require("../models/ShippingAgent");
+const Vessel = require("../models/Vessel");
 
 module.exports = {
   addVessels: async (req, res) => {
@@ -38,12 +39,29 @@ module.exports = {
   getAllVessel: async (req, res) => {
     try {
       const vessels = await Vessels.findAll({
-        include: [ShippingAgent],
+        // include: [ShippingAgent],
       });
 
       res.status(200).json(vessels);
     } catch (err) {
       res.status(500).send();
+    }
+  },
+  getAgentVessel: async (req, res) => {
+    const { vessel_id } = req.body;
+
+    try {
+      if (vessel_id == null)
+        return res.status(404).json({ message: "cannot find Vessel" });
+
+      const vessels = await Vessel.findAll({
+        where: {
+          shipping_agent_id: vessel_id,
+        },
+      });
+      res.status(200).json(vessels);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
     }
   },
   updateVessel: async (req, res) => {

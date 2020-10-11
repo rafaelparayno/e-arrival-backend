@@ -1,4 +1,5 @@
 const ShippingAgents = require("../models/ShippingAgent");
+const Vessel = require("../models/Vessel");
 const { Op } = require("sequelize");
 
 module.exports = {
@@ -64,6 +65,13 @@ module.exports = {
     }
     res.shippingAgent = shippingAgent;
     next();
+  },
+  getSingleData: async (req, res) => {
+    try {
+      res.status(201).json(res.shippingAgent);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
   },
   deleteAgent: async (req, res) => {
     try {
