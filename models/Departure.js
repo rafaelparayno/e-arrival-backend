@@ -2,36 +2,28 @@ const { Sequelize, DataTypes } = require("sequelize");
 const db = require("../config/database");
 const Vessel = require("./Vessel");
 
-const Crew = db.define(
-  "crews",
+const Departure = db.define(
+  "vessel_departures",
   {
     id: {
-      field: "crew_id",
+      field: "vessel_departures_id",
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    firstname: {
-      field: "c_fn",
-      type: DataTypes.STRING,
+    date: {
+      field: "departure_date",
+      type: DataTypes.DATE,
       allowNull: false,
     },
-    middlename: {
-      field: "c_mn",
-      type: DataTypes.STRING,
+    time: {
+      field: "departure_time",
+      type: DataTypes.TIME,
       allowNull: false,
     },
-    lastname: {
-      field: "c_ln",
+    portcall: {
+      field: "port_of_call",
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    is_fil: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    status: {
-      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
@@ -40,12 +32,12 @@ const Crew = db.define(
   }
 );
 
-Vessel.hasMany(Crew, {
+Vessel.hasMany(Departure, {
   foreignKey: "vessels_id",
 });
 
-Crew.belongsTo(Vessel, {
+Departure.belongsTo(Vessel, {
   foreignKey: "vessels_id",
 });
 
-module.exports = Crew;
+module.exports = Departure;

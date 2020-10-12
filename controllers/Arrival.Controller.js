@@ -54,6 +54,29 @@ module.exports = {
     res.arrival = arrival;
     next();
   },
+  getVesselArrival: async (req, res) => {
+    const { shipping_id } = req.body;
+
+    try {
+      if (shipping_id == null)
+        return res.status(404).json({ message: "cannot find Vessel" });
+
+      const arrivals = await Arrival.findAll({
+        include: [
+          {
+            model: Vessel,
+            where: {
+              shipping_agent_id: shipping_id,
+            },
+            required: true,
+          },
+        ],
+      });
+      res.status(200).json(arrivals);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
   deleteArrival: async (req, res) => {
     try {
       await res.arrival.destroy();

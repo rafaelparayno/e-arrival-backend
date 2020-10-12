@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const VesselController = require("../controllers/Vessel.Controller");
 const auth = require("../middleware/auth");
-const Vessel = require("../models/Vessel");
 
 router.get("/", auth.authenticateToken, VesselController.getAllVessel);
 

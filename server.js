@@ -1,9 +1,7 @@
 const express = require("express");
 const app = express();
-const cors = require('cors');
+const cors = require("cors");
 const db = require("./config/database");
-
-
 
 db.authenticate()
   .then(() => console.log("database connected..."))
@@ -26,6 +24,8 @@ app.use("/crews", require("./routes/crews"));
 app.use("/bookings", require("./routes/booking"));
 
 app.use("/arrivals", require("./routes/arrival"));
+
+app.use("/departure", require("./routes/departure"));
 
 app.use(async (req, res, next) => {
   const error = new Error("not Found");

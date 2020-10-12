@@ -8,7 +8,7 @@ module.exports = {
       firstname,
       middlename,
       lastname,
-      nationality,
+      is_fil,
       status,
       vessels_id,
     } = req.body;
@@ -18,7 +18,7 @@ module.exports = {
         firstname: firstname,
         middlename: middlename,
         lastname: lastname,
-        nationality,
+        is_fil,
         status,
         vessels_id,
       });
@@ -64,7 +64,7 @@ module.exports = {
       firstname,
       middlename,
       lastname,
-      nationality,
+      is_fil,
       status,
       vessels_id,
     } = req.body;
@@ -81,8 +81,8 @@ module.exports = {
       res.crew.lastname = lastname;
     }
 
-    if (nationality != null) {
-      res.crew.nationality = nationality;
+    if (is_fil != null) {
+      res.crew.is_fil = is_fil;
     }
 
     if (status != null) {
