@@ -1,0 +1,123 @@
+GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyMzU2MDU0LCJleHAiOjE2MDIzNTY5NTR9.DF1eBBRGycwGNh3ODitXetuKBQyKaFz5B7Qk_CvP7OI
+
+###
+PATCH   http://localhost:5000/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyMzYxMjc0LCJleHAiOjE2MDIzNjIxNzR9.nSFhG5vgLhKGQrBICi2I8LHhgz5wLa7FbSLFd2wpFrY
+Content-Type: application/json
+
+{
+    "firstname" : "brando"
+}
+
+###
+
+POST http://localhost:5000/users/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAxODc1OTMyLCJleHAiOjE2MDE4NzU5NjJ9.Rc0WDJvyFyEmjGbHzRTaFWHuYi2-F0nqOp94F26Cq5Q"
+}
+
+###
+
+
+###
+POST  http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    "username" : "admin",
+    "password" : "123123123"
+}
+
+
+###
+
+DELETE  http://localhost:5000/users/logout
+Content-Type: application/json
+
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAxODc0NTg4LCJleHAiOjE2MDE4NzU0ODh9.AWM2NDWywraDZ_V-RIiTViSv_y1grq5nBaDrfzhJ1_s"
+}
+
+
+###
+GET http://localhost:5000/agents/6/vessel/
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyMzgzMDUwLCJleHAiOjE2MDIzODM5NTB9.rkCxsHwkSB2YATIgGCHn3N6Ppts9_7YOkKkmb2vtfFk
+
+# {
+#      "shipping_agent_name":"agent asdadadad",
+#      "e_add":"rafael@update.com"
+
+# }
+
+###
+
+POST   http://localhost:5000/vessels/
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNDk0MTYwLCJleHAiOjE2MDI0OTUwNjB9.1LX9ZYqTUgcwdcjUjcpir9EepaRTFYVtNx8VxS4yvsA
+ 
+{
+   "vessel_name":"try",
+      "vessel_flag":2,
+      "imonumber":"imo",
+      "GRT":2,
+      "DWT":3,
+      "NRT":4,
+      "LOA":5,
+      "breadth":"wew",
+      "callsign":"wewewew",
+      "shipping_agent_id":8
+
+}
+
+
+###
+
+PATCH   http://localhost:5000/crews/4  
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNTE3NjM1LCJleHAiOjE2MDI1MTg1MzV9.ys7_sayILVTkDyxMNPC97RAeUSEjUtYHUG8c3_ZGjY8
+
+
+{
+    "firstname": "asdasd",
+"fullname": "asdasd dasdad",
+"id": 4,
+"is_fil": 1,
+"lastname": "dasdad",
+"middlename": "asda",
+"status": "0",
+"vessels_id": 12
+}
+
+
+###
+
+POST  http://localhost:5000/bookings/vessel
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNTI3NDEyLCJleHAiOjE2MDI1MjgzMTJ9.LimtBfNUm04HULtTgQGdJCMhz-E9VTcZzkb8hwcd1k0
+
+{
+      "shipping_id": 8
+}
+###
+
+POST  http://localhost:5000/arrivals/today
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNTY3NzYxLCJleHAiOjE2MDI1Njg2NjF9.6U39snJuuP0abTjRA4Zt0Zb5NDqCuOufi9BDOJfJ20U
+
+{
+    "date" : "2020-10-13"
+}
+
+###
+
+POST http://localhost:5000/departure/vessel
+Content-Type:  application/json
+
+{
+      "shipping_id": 6
+}

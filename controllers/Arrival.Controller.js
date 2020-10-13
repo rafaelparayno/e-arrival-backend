@@ -1,5 +1,6 @@
 const Vessel = require("../models/Vessel");
 const Arrival = require("../models/Arrival");
+const { Op, literal } = require("sequelize");
 
 module.exports = {
   getAllArival: async (req, res) => {
@@ -40,6 +41,89 @@ module.exports = {
       res.status(201).json(newArrival);
     } catch (err) {
       res.status(500).send({ message: err.message });
+    }
+  },
+  getArrivalToday: async (req, res) => {
+    const { date } = req.body;
+
+    try {
+      if (date == null)
+        return res.status(404).json({ message: "cannot find arrivals" });
+
+      const arrivals = await Arrival.findAll({
+        include: [
+          {
+            model: Vessel,
+            attributes: {
+              include: [
+                [
+                  // Note the wrapping parentheses in the call below!
+                  literal(`(
+                        SELECT COUNT(*)
+                        FROM crews AS crew
+                        WHERE
+                            crew.vessels_id = arrivals.vessels_id
+                            AND
+                            crew.is_fil = 1 
+                            AND   
+                            crew.status = 1
+                    )`),
+                  "signinFil",
+                ],
+                [
+                  // Note the wrapping parentheses in the call below!
+                  literal(`(
+                        SELECT COUNT(*)
+                        FROM crews AS crew
+                        WHERE
+                            crew.vessels_id = arrivals.vessels_id
+                            AND
+                            crew.is_fil = 1 
+                            AND 
+                            crew.status = 0
+                    )`),
+                  "signOutFil",
+                ],
+                [
+                  // Note the wrapping parentheses in the call below!
+                  literal(`(
+                        SELECT COUNT(*)
+                        FROM crews AS crew
+                        WHERE
+                            crew.vessels_id = arrivals.vessels_id
+                            AND
+                            crew.is_fil = 0 
+                            AND   
+                            crew.status = 1
+                    )`),
+                  "signinForeign",
+                ],
+                [
+                  // Note the wrapping parentheses in the call below!
+                  literal(`(
+                        SELECT COUNT(*)
+                        FROM crews AS crew
+                        WHERE
+                            crew.vessels_id = arrivals.vessels_id
+                            AND
+                            crew.is_fil = 0 
+                            AND 
+                            crew.status = 0
+                    )`),
+                  "signOutForeign",
+                ],
+              ],
+            },
+            required: true,
+          },
+        ],
+        where: {
+          date: date,
+        },
+      });
+      res.status(200).json(arrivals);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
     }
   },
   getArrival: async (req, res, next) => {

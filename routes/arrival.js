@@ -12,6 +12,13 @@ router.post(
   auth.authenticateToken,
   ArrivalController.getVesselArrival
 );
+
+router.post(
+  "/today",
+  auth.authenticateToken,
+  ArrivalController.getArrivalToday
+);
+
 //router.patch("/:id", ArrivalController.addArrival);
 
 router.delete(
