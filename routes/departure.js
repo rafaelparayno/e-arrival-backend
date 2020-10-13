@@ -8,6 +8,8 @@ router.get("/", DepartureController.getAllDeparture);
 
 router.post("/", DepartureController.addDeparture);
 
+router.post("/vessel", DepartureController.getVesselDeparture);
+
 // router.patch(
 //   "/:id",
 //   auth.authenticateToken,

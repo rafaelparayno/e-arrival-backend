@@ -7,6 +7,12 @@ router.get("/", auth.authenticateToken, BookingController.getAllBooking);
 
 router.post("/", auth.authenticateToken, BookingController.addBooking);
 
+router.post(
+  "/vessel",
+  auth.authenticateToken,
+  BookingController.getVesselBooking
+);
+
 router.patch(
   "/:id",
   auth.authenticateToken,

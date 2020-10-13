@@ -1,6 +1,5 @@
 const Booking = require("../models/Booking");
 const Vessel = require("../models/Vessel");
-const { Op } = require("sequelize");
 
 module.exports = {
   addBooking: async (req, res) => {
@@ -27,6 +26,29 @@ module.exports = {
       res.status(200).json(booking);
     } catch (err) {
       res.status(500).send();
+    }
+  },
+  getVesselBooking: async (req, res) => {
+    const { shipping_id } = req.body;
+
+    try {
+      if (shipping_id == null)
+        return res.status(404).json({ message: "cannot find Vessel" });
+
+      const bookinngs = await Booking.findAll({
+        include: [
+          {
+            model: Vessel,
+            where: {
+              shipping_agent_id: shipping_id,
+            },
+            required: true,
+          },
+        ],
+      });
+      res.status(200).json(bookinngs);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
     }
   },
   updateBooking: async (req, res) => {

@@ -13,6 +13,29 @@ module.exports = {
       res.status(500).send();
     }
   },
+  getVesselDeparture: async (req, res) => {
+    const { shipping_id } = req.body;
+
+    try {
+      if (shipping_id == null)
+        return res.status(404).json({ message: "cannot find Vessel" });
+
+      const departures = await Departure.findAll({
+        include: [
+          {
+            model: Vessel,
+            where: {
+              shipping_agent_id: shipping_id,
+            },
+            required: true,
+          },
+        ],
+      });
+      res.status(200).json(departures);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
   addDeparture: async (req, res) => {
     const { date, time, vessels_id, portcall } = req.body;
 
