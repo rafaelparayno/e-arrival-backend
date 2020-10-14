@@ -8,15 +8,15 @@ router.get("/", auth.authenticateToken, ArrivalController.getAllArival);
 router.post("/", auth.authenticateToken, ArrivalController.addArrival);
 
 router.post(
-  "/vessel",
-  auth.authenticateToken,
-  ArrivalController.getVesselArrival
-);
-
-router.post(
   "/today",
   auth.authenticateToken,
   ArrivalController.getArrivalToday
+);
+
+router.post(
+  "/vessel",
+  auth.authenticateToken,
+  ArrivalController.getVesselArrival
 );
 
 //router.patch("/:id", ArrivalController.addArrival);

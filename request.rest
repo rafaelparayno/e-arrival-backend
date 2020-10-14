@@ -1,8 +1,12 @@
-GET http://localhost:5000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyMzU2MDU0LCJleHAiOjE2MDIzNTY5NTR9.DF1eBBRGycwGNh3ODitXetuKBQyKaFz5B7Qk_CvP7OI
+POST http://199.241.138.64/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNjUyODkzLCJleHAiOjE2MDI2NTM3OTN9.ywxBRThAfXvwzUoRQuYAJGNS5OmCH9rJXXQrFlayUdE
+
+{
+    
+}
 
 ###
-PATCH   http://localhost:5000/users/1
+PATCH   http://199.241.138.64/users/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyMzYxMjc0LCJleHAiOjE2MDIzNjIxNzR9.nSFhG5vgLhKGQrBICi2I8LHhgz5wLa7FbSLFd2wpFrY
 Content-Type: application/json
 
@@ -12,7 +16,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5000/users/token
+POST http://199.241.138.64/users/token
 Content-Type: application/json
 
 {
@@ -34,7 +38,7 @@ Content-Type: application/json
 
 ###
 
-DELETE  http://localhost:5000/users/logout
+DELETE  http://199.241.138.64/users/logout
 Content-Type: application/json
 
 
@@ -44,7 +48,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:5000/agents/6/vessel/
+GET http://199.241.138.64/agents/6/vessel/
 Content-Type:  application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyMzgzMDUwLCJleHAiOjE2MDIzODM5NTB9.rkCxsHwkSB2YATIgGCHn3N6Ppts9_7YOkKkmb2vtfFk
 
@@ -56,7 +60,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 
-POST   http://localhost:5000/vessels/
+POST   http://199.241.138.64/vessels/
 Content-Type:  application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNDk0MTYwLCJleHAiOjE2MDI0OTUwNjB9.1LX9ZYqTUgcwdcjUjcpir9EepaRTFYVtNx8VxS4yvsA
  
@@ -77,7 +81,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 
-PATCH   http://localhost:5000/crews/4  
+PATCH   http://199.241.138.64/crews/4  
 Content-Type:  application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNTE3NjM1LCJleHAiOjE2MDI1MTg1MzV9.ys7_sayILVTkDyxMNPC97RAeUSEjUtYHUG8c3_ZGjY8
 
@@ -96,7 +100,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 
-POST  http://localhost:5000/bookings/vessel
+POST  http://199.241.138.64/bookings/vessel
 Content-Type:  application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNTI3NDEyLCJleHAiOjE2MDI1MjgzMTJ9.LimtBfNUm04HULtTgQGdJCMhz-E9VTcZzkb8hwcd1k0
 
@@ -107,15 +111,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 POST  http://localhost:5000/arrivals/today
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNTY3NzYxLCJleHAiOjE2MDI1Njg2NjF9.6U39snJuuP0abTjRA4Zt0Zb5NDqCuOufi9BDOJfJ20U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNjU2NjA1LCJleHAiOjE2MDI2NTc1MDV9.Q1-IByHcfR0nrRUb5y5wqCxOsD6UBYIRaRimGF3Z_P4
 
 {
-    "date" : "2020-10-13"
+    "date": "2020-10-14"
 }
 
 ###
 
-POST http://localhost:5000/departure/vessel
+POST http://199.241.138.64/departure/vessel
 Content-Type:  application/json
 
 {
