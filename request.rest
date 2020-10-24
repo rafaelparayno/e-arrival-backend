@@ -111,7 +111,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 POST  http://localhost:5000/arrivals/today
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNjU2NjA1LCJleHAiOjE2MDI2NTc1MDV9.Q1-IByHcfR0nrRUb5y5wqCxOsD6UBYIRaRimGF3Z_P4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAzNTI4ODE0LCJleHAiOjE2MDM1Mjk3MTR9.ngJy7s3hsHY5PzfWXXvhSqQN1MxerRDLAOP2s4kFbdg
 
 {
     "date": "2020-10-14"
