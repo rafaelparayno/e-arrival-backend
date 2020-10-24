@@ -3,27 +3,28 @@ const router = express.Router();
 const BookingController = require("../controllers/Booking.Controller");
 const auth = require("../middleware/auth");
 
-router.get("/", auth.authenticateToken, BookingController.getAllBooking);
+router.get("/", BookingController.getAllBooking);
 
-router.post("/", auth.authenticateToken, BookingController.addBooking);
+router.post("/", BookingController.addBooking);
 
-router.post(
-  "/vessel",
-  auth.authenticateToken,
-  BookingController.getVesselBooking
-);
+// router.post(
+//   "/vessel",
+//   auth.authenticateToken,
+//   BookingController.getVesselBooking
+// );
 
-router.patch(
-  "/:id",
-  auth.authenticateToken,
-  BookingController.getBooking,
-  BookingController.updateBooking
-);
+// router.patch(
+//   "/:id",
+//   auth.authenticateToken,
+//   BookingController.getBooking,
+//   BookingController.updateBooking
+// );
 
-router.delete(
-  "/:id",
-  auth.authenticateToken,
-  BookingController.getBooking,
-  BookingController.deleteBooking
-);
+// router.delete(
+//   "/:id",
+//   auth.authenticateToken,
+//   BookingController.getBooking,
+//   BookingController.deleteBooking
+// );
+
 module.exports = router;

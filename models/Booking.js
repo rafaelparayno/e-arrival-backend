@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const db = require("../config/database");
-const Vessel = require("./Vessel");
+const BasicInfo = require("./BasicInfo");
 
 const Booking = db.define(
   "bookings",
@@ -27,12 +27,12 @@ const Booking = db.define(
   }
 );
 
-Vessel.hasMany(Booking, {
-  foreignKey: "vessels_id",
+BasicInfo.hasMany(Booking, {
+  foreignKey: "basic_info_id",
 });
 
-Booking.belongsTo(Vessel, {
-  foreignKey: "vessels_id",
+Booking.belongsTo(BasicInfo, {
+  foreignKey: "basic_info_id",
 });
 
 module.exports = Booking;

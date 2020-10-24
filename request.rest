@@ -203,6 +203,7 @@ Content-Type:  application/json
 }
 
 ###
+
 POST http://localhost:5000/departure
 Content-Type:  application/json
 
@@ -210,6 +211,18 @@ Content-Type:  application/json
    "date": "2020-10-24",
     "time": "08:00:00",
     "portcall": "asdas",
+    "basic_info_id": 3
+}
+
+
+###
+
+GET http://localhost:5000/bookings
+Content-Type:  application/json
+
+{
+   "date": "2020-10-24",
+    "time": "09:00:00",
     "basic_info_id": 3
 }
 
