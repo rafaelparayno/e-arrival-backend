@@ -7,15 +7,13 @@ router.get("/", auth.authenticateToken, ArrivalController.getAllArival);
 
 router.post("/", auth.authenticateToken, ArrivalController.addArrival);
 
+router.post("/try", ArrivalController.getVesselArrival);
+
 router.post(
   "/vessel",
   auth.authenticateToken,
   ArrivalController.getVesselArrival
 );
-
-router.post("/today", ArrivalController.getVesselArrival);
-
-//router.patch("/:id", ArrivalController.addArrival);
 
 router.delete(
   "/:id",
