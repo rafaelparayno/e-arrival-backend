@@ -109,13 +109,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 }
 ###
 
-POST  http://localhost:5000/arrivals/today
+GET  http://localhost:5000/arrivals/
 Content-Type:  application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAzNTI4ODE0LCJleHAiOjE2MDM1Mjk3MTR9.ngJy7s3hsHY5PzfWXXvhSqQN1MxerRDLAOP2s4kFbdg
 
-{
-    "date": "2020-10-14"
-}
+# {
+#     "date": "2020-10-14"
+# }
 
 ###
 
@@ -185,4 +185,32 @@ Content-Type:  application/json
     "names_for_singoff": "asdsadsadsadasdasd",
     "basic_info_id": 3
   }
+
+###
+GET http://localhost:5000/arrivals
+Content-Type:  application/json
+
+{
+   
+   "draft": "asdad",
+    "berth": "adsasdasd",
+    "date": "2020-10-24",
+    "time": "09:06:00",
+    "purpose": "asdadad",
+    "discharged": 400,
+    "loaded": 400,
+    "basic_info_id": 3
+}
+
+###
+POST http://localhost:5000/departure
+Content-Type:  application/json
+
+{
+   "date": "2020-10-24",
+    "time": "08:00:00",
+    "portcall": "asdas",
+    "basic_info_id": 3
+}
+
 
