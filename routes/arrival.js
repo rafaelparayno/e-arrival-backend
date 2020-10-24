@@ -7,7 +7,9 @@ router.get("/", auth.authenticateToken, ArrivalController.getAllArival);
 
 router.post("/", auth.authenticateToken, ArrivalController.addArrival);
 
-router.post("/try", auth.authenticateToken, ArrivalController.getVesselArrival);
+router.post("/try", (req, res) => {
+  res.send("POST request to the homepage");
+});
 
 router.post(
   "/vessel",
