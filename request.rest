@@ -155,7 +155,7 @@ Content-Type:  application/json
 
  {
    
-    "name": "asda",
+    "vessel_name": "asda",
     "flag_registry": "dasda",
     "voyage_no": "dasda",
     "grt": 124,
@@ -167,3 +167,22 @@ Content-Type:  application/json
     "departure_last_port": "asda",
     "basic_info_id": 3
   }
+
+
+### 
+
+POST http://localhost:5000/newcrew
+Content-Type:  application/json
+
+ {
+   
+    "name_master": "asdasdas",
+    "no_fil_crews": 2,
+    "no_for_crews": 2,
+    "names_fil_singin": "asdadsaddadasdasdasdasdasdsaasda",
+    "names_for_singin": "asdsadasdasdasdadasd",
+    "names_fil_singoff": "asdsadasdasd",
+    "names_for_singoff": "asdsadsadsadasdasd",
+    "basic_info_id": 3
+  }
+
