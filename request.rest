@@ -127,7 +127,7 @@ Content-Type:  application/json
 }
 
 ###
-POST http://localhost:5000/basicinfo
+POST  http://localhost:5000/basicinfo
 Content-Type:  application/json
 
 {
@@ -146,3 +146,24 @@ Content-Type:  application/json
     "driver_name": "asd",
     "driver_cno": "asdasdasdasda"
 }
+
+###
+
+
+POST http://localhost:5000/vesselinfo
+Content-Type:  application/json
+
+ {
+   
+    "name": "asda",
+    "flag_registry": "dasda",
+    "voyage_no": "dasda",
+    "grt": 124,
+    "nrt": 123,
+    "dwt": 123,
+    "loa": 123,
+    "breadth": 1231123,
+    "name_last_port": "asdad",
+    "departure_last_port": "asda",
+    "basic_info_id": 3
+  }

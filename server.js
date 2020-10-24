@@ -29,6 +29,8 @@ app.use("/departure", require("./routes/departure"));
 
 app.use("/basicinfo", require("./routes/basicInfo"));
 
+app.use("/vesselinfo", require("./routes/vesselInfos"));
+
 app.use(async (req, res, next) => {
   const error = new Error("not Found");
   error.status = 404;
