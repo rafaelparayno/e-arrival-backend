@@ -5,6 +5,8 @@ const BasicInfoController = require("../controllers/BasicInfo.Controller");
 
 router.get("/", BasicInfoController.showAllBasicInfo);
 
+router.post("/", BasicInfoController.addBasicInfo);
+
 // router.get(
 //   "/:id",
 //   auth.authenticateToken,

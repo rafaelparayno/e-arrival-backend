@@ -46,7 +46,7 @@ const BasicInfo = db.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    vehichle_type: {
+    vehicle_type: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -127,4 +127,22 @@ Content-Type:  application/json
 }
 
 ###
-GET http://localhost:5000/basicinfo
+POST http://localhost:5000/basicinfo
+Content-Type:  application/json
+
+{
+     "shipping_license_no" : "asdas",
+    "contact_person" : "asdad",
+    "cno": "asdad",
+    "quaratine_facility": "asdad",
+    "quaratine_address": "asdadassdasdadasdasdada",
+    "quaratine_cno": "asda",
+    "callsign": "dasd",
+    "shipping_agency_name": "adad",
+    "crew_service_boat": "asda",
+    "vehicle_type": "dasdas",
+    "vehicle_model": "asdas",
+    "vehicle_plate_no": "asd",
+    "driver_name": "asd",
+    "driver_cno": "asdasdasdasda"
+}

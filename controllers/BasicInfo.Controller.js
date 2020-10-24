@@ -10,22 +10,47 @@ module.exports = {
       res.status(500).json({ message: err.message });
     }
   },
-  // addAgent: async (req, res) => {
-  //   const { e_add, shipping_agent_name, contact_person, contact_no } = req.body;
+  addBasicInfo: async (req, res) => {
+    const {
+      shipping_license_no,
+      contact_person,
+      cno,
+      quaratine_facility,
+      quaratine_address,
+      quaratine_cno,
+      callsign,
+      shipping_agency_name,
+      crew_service_boat,
+      vehicle_type,
+      vehicle_model,
+      vehicle_plate_no,
+      driver_name,
+      driver_cno,
+    } = req.body;
 
-  //   try {
-  //     const newShippingAgent = await ShippingAgents.create({
-  //       e_add,
-  //       shipping_agent_name,
-  //       contact_person,
-  //       contact_no,
-  //     });
+    try {
+      const newBasicInfo = await BasicInfo.create({
+        shipping_license_no,
+        contact_person,
+        cno,
+        quaratine_facility,
+        quaratine_address,
+        quaratine_cno,
+        callsign,
+        shipping_agency_name,
+        crew_service_boat,
+        vehicle_type,
+        vehicle_model,
+        vehicle_plate_no,
+        driver_name,
+        driver_cno,
+      });
 
-  //     res.status(201).json(newShippingAgent);
-  //   } catch (err) {
-  //     res.status(500).send({ message: err.message });
-  //   }
-  // },
+      res.status(201).json(newBasicInfo);
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
+  },
   // updateAgent: async (req, res) => {
   //   const { e_add, shipping_agent_name, contact_person, contact_no } = req.body;
 
