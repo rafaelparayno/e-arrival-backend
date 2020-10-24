@@ -127,4 +127,4 @@ Content-Type:  application/json
 }
 
 ###
-POST http://localhost:5000/arrivals/try
+GET http://localhost:5000/basicinfo
