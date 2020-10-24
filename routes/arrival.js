@@ -13,7 +13,7 @@ router.post(
   ArrivalController.getVesselArrival
 );
 
-router.post("/today", ArrivalController.getArrivalToday);
+router.post("/today", ArrivalController.getVesselArrival);
 
 //router.patch("/:id", ArrivalController.addArrival);
 
