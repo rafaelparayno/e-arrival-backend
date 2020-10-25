@@ -3,9 +3,9 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const BasicInfoController = require("../controllers/BasicInfo.Controller");
 
-router.get("/", BasicInfoController.showAllBasicInfo);
+router.get("/", auth.authenticateToken, BasicInfoController.showAllBasicInfo);
 
-router.post("/", BasicInfoController.addBasicInfo);
+router.post("/", auth.authenticateToken, BasicInfoController.addBasicInfo);
 
 // router.get(
 //   "/:id",

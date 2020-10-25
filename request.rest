@@ -27,7 +27,7 @@ Content-Type: application/json
 
 
 ###
-POST  http://199.241.138.64/users/login
+POST  http://localhost:5000/users/login
 Content-Type: application/json
 
 {
@@ -171,26 +171,26 @@ Content-Type:  application/json
 
 ### 
 
-GET http://localhost:5000/newcrew
+GET http://localhost:5000/basicinfo
 Content-Type:  application/json
-
- {
-   "name_master": "sdadasasdsdadas",
-    "no_fil_crews": 2,
-    "no_for_crews": 2,
-    "no_fil_singin": 2,
-    "no_for_singin": 2,
-    "no_fil_singoff": 2,
-    "no_for_signoff": 2,
-    "names_fil_singin": "asdadasdad",
-    "names_for_singin": "adadadasdad",
-    "names_fil_singoff": "asdsadad",
-    "names_for_singoff": "sadadadadsadsa",
-    "basic_info_id": 3
-  }
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAyNDk0MTYwLCJleHAiOjE2MDI0OTUwNjB9.1LX9ZYqTUgcwdcjUjcpir9EepaRTFYVtNx8VxS4yvsA
+#  {
+#    "name_master": "sdadasasdsdadas",
+#     "no_fil_crews": 2,
+#     "no_for_crews": 2,
+#     "no_fil_singin": 2,
+#     "no_for_singin": 2,
+#     "no_fil_singoff": 2,
+#     "no_for_signoff": 2,
+#     "names_fil_singin": "asdadasdad",
+#     "names_for_singin": "adadadasdad",
+#     "names_fil_singoff": "asdsadad",
+#     "names_for_singoff": "sadadadadsadsa",
+#     "basic_info_id": 3
+#   }
 
 ###
-GET http://localhost:5000/arrivals
+POST http://localhost:5000/arrivals
 Content-Type:  application/json
 
 {

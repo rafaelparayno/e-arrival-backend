@@ -1,9 +1,33 @@
 const BasicInfo = require("../models/BasicInfo");
+const VesselInfo = require("../models/VesselInfo");
+const Arrival = require("../models/Arrival");
+const Booking = require("../models/Booking");
+const new_crews = require("../models/newCrew");
+const Departure = require("../models/Departure");
+// const BasicInfo = require("../models/BasicInfo");
 
 module.exports = {
   showAllBasicInfo: async (req, res) => {
     try {
-      const basicInfo = await BasicInfo.findAll();
+      const basicInfo = await BasicInfo.findAll({
+        include: [
+          {
+            model: VesselInfo,
+          },
+          {
+            model: Arrival,
+          },
+          {
+            model: Booking,
+          },
+          {
+            model: new_crews,
+          },
+          {
+            model: Departure,
+          },
+        ],
+      });
 
       res.status(200).json(basicInfo);
     } catch (err) {
