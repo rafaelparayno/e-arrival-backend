@@ -1,5 +1,7 @@
 const Booking = require("../models/Booking");
-const Vessel = require("../models/Vessel");
+const BasicInfo = require("../models/BasicInfo");
+const VesselInfo = require("../models/VesselInfo");
+const NewCrew = require("../models/newCrew");
 
 module.exports = {
   addBooking: async (req, res) => {
@@ -20,7 +22,22 @@ module.exports = {
   getAllBooking: async (req, res) => {
     try {
       const booking = await Booking.findAll({
-        // include: [Vessel],
+        include: [
+          {
+            model: BasicInfo,
+            required: true,
+            include: [
+              {
+                model: VesselInfo,
+                require: true,
+              },
+              {
+                model: NewCrew,
+                require: true,
+              },
+            ],
+          },
+        ],
       });
 
       res.status(200).json(booking);

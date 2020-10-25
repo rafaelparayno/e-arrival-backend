@@ -118,18 +118,18 @@ module.exports = {
     res.BasicDetails = BasicDetails;
     next();
   },
-  // getSingleData: async (req, res) => {
-  //   try {
-  //     res.status(201).json(res.shippingAgent);
-  //   } catch (err) {
-  //     res.status(500).json({ message: err.message });
-  //   }
-  // },
+  getSingleData: async (req, res) => {
+    try {
+      res.status(201).json(res.BasicDetails);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
   deleteBasicDetails: async (req, res) => {
     try {
       await res.BasicDetails.destroy();
 
-      res.json({ message: "Deleted shipping agent" });
+      res.json({ message: "Deleted basic Details" });
     } catch (err) {
       res.status(400).json({ message: err.message });
     }

@@ -171,7 +171,7 @@ Content-Type:  application/json
 
 ### 
 
-DELETE http://199.241.138.64/basicinfo/14
+GET http://199.241.138.64/basicinfo/14
 Content-Type:  application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAzNjMzNjkzLCJleHAiOjE2MDM2MzQ1OTN9.UrnSYJo-reh5wdsGh4g8bfyJm0S56qJO_TX04T0hJkU
 #  {
@@ -220,7 +220,7 @@ Content-Type:  application/json
 
 ###
 
-GET http://localhost:5000/bookings
+GET http://199.241.138.64/bookings
 Content-Type:  application/json
 
 {

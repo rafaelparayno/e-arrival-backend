@@ -5,6 +5,13 @@ const BasicInfoController = require("../controllers/BasicInfo.Controller");
 
 router.get("/", auth.authenticateToken, BasicInfoController.showAllBasicInfo);
 
+router.get(
+  "/:id",
+  auth.authenticateToken,
+  BasicInfoController.getBasicDetails,
+  BasicInfoController.getSingleData
+);
+
 router.post("/", auth.authenticateToken, BasicInfoController.addBasicInfo);
 
 router.delete(
