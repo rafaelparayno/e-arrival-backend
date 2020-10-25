@@ -13,18 +13,23 @@ module.exports = {
         include: [
           {
             model: VesselInfo,
+            required: true,
           },
           {
             model: Arrival,
+            required: true,
           },
           {
             model: Booking,
+            required: true,
           },
           {
             model: new_crews,
+            required: true,
           },
           {
             model: Departure,
+            required: true,
           },
         ],
       });
