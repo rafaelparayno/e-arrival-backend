@@ -150,30 +150,30 @@ Content-Type:  application/json
 ###
 
 
-POST http://localhost:5000/vesselinfo
+GET http://localhost:5000/vesselinfo/basic/16
 Content-Type:  application/json
 
- {
+#  {
    
-    "vessel_name": "asda",
-    "flag_registry": "dasda",
-    "voyage_no": "dasda",
-    "grt": 124,
-    "nrt": 123,
-    "dwt": 123,
-    "loa": 123,
-    "breadth": 1231123,
-    "name_last_port": "asdad",
-    "departure_last_port": "asda",
-    "basic_info_id": 3
-  }
+#     "vessel_name": "asda",
+#     "flag_registry": "dasda",
+#     "voyage_no": "dasda",
+#     "grt": 124,
+#     "nrt": 123,
+#     "dwt": 123,
+#     "loa": 123,
+#     "breadth": 1231123,
+#     "name_last_port": "asdad",
+#     "departure_last_port": "asda",
+#     "basic_info_id": 3
+#   }
 
 
 ### 
 
-GET http://199.241.138.64/basicinfo/14
+GET http://199.241.138.64/basicinfo/16
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAzNjMzNjkzLCJleHAiOjE2MDM2MzQ1OTN9.UrnSYJo-reh5wdsGh4g8bfyJm0S56qJO_TX04T0hJkU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAzNjY5MjAzLCJleHAiOjE2MDM2NzAxMDN9.VBKUmPkFoS5KztMQ3LCO8C2t2Z1oOlFiu6uhPj8pS_I
 #  {
 #    "name_master": "sdadasasdsdadas",
 #     "no_fil_crews": 2,

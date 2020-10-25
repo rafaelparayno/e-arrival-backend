@@ -5,6 +5,8 @@ const auth = require("../middleware/auth");
 
 router.get("/", VesselInfoController.getAllVesselInfo);
 
+router.get("/basic/:id", VesselInfoController.getBasicVesselInfo);
+
 router.post("/", VesselInfoController.addVessels);
 
 // // router.post("/agent", auth.authenticateToken, VesselController.getAgentVessel);

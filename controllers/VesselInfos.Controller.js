@@ -126,18 +126,41 @@ module.exports = {
   //       res.status(400).json({ message: err.message });
   //     }
   //   },
-  //   getVessel: async (req, res, next) => {
-  //     let vessel;
-  //     try {
-  //       vessel = await Vessels.findByPk(req.params.id);
-  //       if (vessel == null)
-  //         return res.status(404).json({ message: "cannot find Vessel" });
-  //     } catch (err) {
-  //       res.status(500).json({ message: err.message });
-  //     }
-  //     res.vessel = vessel;
-  //     next();
-  //   },
+
+  getBasicVesselInfo: async (req, res) => {
+    try {
+      vessel = await VesselInfo.findOne({
+        where: {
+          basic_info_id: req.params.id,
+        },
+      });
+      if (vessel == null)
+        return res.status(404).json({ message: "cannot find Vessel" });
+
+      res.status(201).json(vessel);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
+  getSingleData: async (req, res) => {
+    try {
+      res.status(201).json(res.vessel);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
+  getVessel: async (req, res, next) => {
+    let vessel;
+    try {
+      vessel = await VesselInfo.findOne(req.params.id);
+      if (vessel == null)
+        return res.status(404).json({ message: "cannot find Vessel" });
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+    res.vessel = vessel;
+    next();
+  },
   //   deleteVessel: async (req, res) => {
   //     try {
   //       await res.vessel.destroy();
