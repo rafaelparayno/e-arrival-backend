@@ -171,18 +171,21 @@ Content-Type:  application/json
 
 ### 
 
-POST http://localhost:5000/newcrew
+GET http://localhost:5000/newcrew
 Content-Type:  application/json
 
  {
-   
-    "name_master": "asdasdas",
+   "name_master": "sdadasasdsdadas",
     "no_fil_crews": 2,
     "no_for_crews": 2,
-    "names_fil_singin": "asdadsaddadasdasdasdasdasdsaasda",
-    "names_for_singin": "asdsadasdasdasdadasd",
-    "names_fil_singoff": "asdsadasdasd",
-    "names_for_singoff": "asdsadsadsadasdasd",
+    "no_fil_singin": 2,
+    "no_for_singin": 2,
+    "no_fil_singoff": 2,
+    "no_for_signoff": 2,
+    "names_fil_singin": "asdadasdad",
+    "names_for_singin": "adadadasdad",
+    "names_fil_singoff": "asdsadad",
+    "names_for_singoff": "sadadadadsadsa",
     "basic_info_id": 3
   }
 

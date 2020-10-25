@@ -23,6 +23,22 @@ const NewCrew = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    no_fil_singin: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    no_for_singin: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    no_fil_singoff: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    no_for_signoff: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     names_fil_singin: {
       type: DataTypes.STRING,
       allowNull: false,
