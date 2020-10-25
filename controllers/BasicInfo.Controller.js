@@ -106,18 +106,18 @@ module.exports = {
   //     res.status(400).json({ message: err.message });
   //   }
   // },
-  // getShippingAgent: async (req, res, next) => {
-  //   let shippingAgent;
-  //   try {
-  //     shippingAgent = await ShippingAgents.findByPk(req.params.id);
-  //     if (shippingAgent == null)
-  //       return res.status(404).json({ message: "cannot find shipping agent" });
-  //   } catch (err) {
-  //     res.status(500).json({ message: err.message });
-  //   }
-  //   res.shippingAgent = shippingAgent;
-  //   next();
-  // },
+  getBasicDetails: async (req, res, next) => {
+    let BasicDetails;
+    try {
+      BasicDetails = await BasicInfo.findByPk(req.params.id);
+      if (BasicDetails == null)
+        return res.status(404).json({ message: "cannot find basic Details" });
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+    res.BasicDetails = BasicDetails;
+    next();
+  },
   // getSingleData: async (req, res) => {
   //   try {
   //     res.status(201).json(res.shippingAgent);
@@ -125,13 +125,13 @@ module.exports = {
   //     res.status(500).json({ message: err.message });
   //   }
   // },
-  // deleteAgent: async (req, res) => {
-  //   try {
-  //     await res.shippingAgent.destroy();
+  deleteBasicDetails: async (req, res) => {
+    try {
+      await res.BasicDetails.destroy();
 
-  //     res.json({ message: "Deleted shipping agent" });
-  //   } catch (err) {
-  //     res.status(400).json({ message: err.message });
-  //   }
-  // },
+      res.json({ message: "Deleted shipping agent" });
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  },
 };

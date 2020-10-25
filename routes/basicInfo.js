@@ -7,27 +7,11 @@ router.get("/", auth.authenticateToken, BasicInfoController.showAllBasicInfo);
 
 router.post("/", auth.authenticateToken, BasicInfoController.addBasicInfo);
 
-// router.get(
-//   "/:id",
-//   auth.authenticateToken,
-//   AgentController.getShippingAgent,
-//   AgentController.getSingleData
-// );
-
-// router.post("/", auth.authenticateToken, AgentController.addAgent);
-
-// router.patch(
-//   "/:id",
-//   auth.authenticateToken,
-//   AgentController.getShippingAgent,
-//   AgentController.updateAgent
-// );
-
-// router.delete(
-//   "/:id",
-//   auth.authenticateToken,
-//   AgentController.getShippingAgent,
-//   AgentController.deleteAgent
-// );
+router.delete(
+  "/:id",
+  auth.authenticateToken,
+  BasicInfoController.getBasicDetails,
+  BasicInfoController.deleteBasicDetails
+);
 
 module.exports = router;
