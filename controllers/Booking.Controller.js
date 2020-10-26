@@ -52,7 +52,6 @@ module.exports = {
           {
             model: BasicInfo,
             require: true,
-            attributes: [],
             include: [
               {
                 model: VesselInfo,
