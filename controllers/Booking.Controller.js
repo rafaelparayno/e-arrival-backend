@@ -48,6 +48,19 @@ module.exports = {
   getBasicBooking: async (req, res) => {
     try {
       const booking = await Booking.findOne({
+        include: [
+          {
+            model: BasicInfo,
+            require: true,
+            attributes: [],
+            include: [
+              {
+                model: VesselInfo,
+                require: true,
+              },
+            ],
+          },
+        ],
         where: {
           basic_info_id: req.params.id,
         },

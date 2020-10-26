@@ -171,12 +171,12 @@ Content-Type:  application/json
 
 ### 
 
-GET http://localhost:5000/newcrew/basic/16
+GET http://199.241.138.64/newcrew/basic/16
 Content-Type:  application/json
 
+###
 
 ##
-
 GET http://199.241.138.64/basicinfo/16
 Content-Type:  application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjAzNjY5MjAzLCJleHAiOjE2MDM2NzAxMDN9.VBKUmPkFoS5KztMQ3LCO8C2t2Z1oOlFiu6uhPj8pS_I
@@ -196,7 +196,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 #   }
 
 ###
-GET http://localhost:5000/arrivals/basic/16
+GET http://199.241.138.64/arrivals/basic/16
 Content-Type:  application/json
 
 # {
@@ -226,13 +226,13 @@ Content-Type:  application/json
 
 ###
 
-GET http://199.241.138.64/bookings
+GET http://localhost:5000/bookings/basic/16
 Content-Type:  application/json
 
-{
-   "date": "2020-10-24",
-    "time": "09:00:00",
-    "basic_info_id": 3
-}
+# {
+#    "date": "2020-10-24",
+#     "time": "09:00:00",
+#     "basic_info_id": 3
+# }
 
 
