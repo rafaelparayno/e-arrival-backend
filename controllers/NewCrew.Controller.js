@@ -53,7 +53,7 @@ module.exports = {
   },
   getBasicCrew: async (req, res) => {
     try {
-      crew = await NewCrew.findOne({
+      const crew = await NewCrew.findOne({
         where: {
           basic_info_id: req.params.id,
         },
@@ -61,7 +61,7 @@ module.exports = {
       if (crew == null)
         return res.status(404).json({ message: "cannot find crew" });
 
-      res.status(201).json(vessel);
+      res.status(201).json(crew);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
