@@ -55,7 +55,7 @@ module.exports = {
       if (booking == null)
         return res.status(404).json({ message: "cannot find booking" });
 
-      res.status(201).json(vessel);
+      res.status(201).json(booking);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

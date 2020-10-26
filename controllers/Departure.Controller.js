@@ -22,7 +22,7 @@ module.exports = {
       if (departure == null)
         return res.status(404).json({ message: "cannot find departure" });
 
-      res.status(201).json(vessel);
+      res.status(201).json(departure);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

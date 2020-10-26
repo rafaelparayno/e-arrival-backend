@@ -53,7 +53,7 @@ module.exports = {
       if (arrival == null)
         return res.status(404).json({ message: "cannot find arrival" });
 
-      res.status(201).json(vessel);
+      res.status(201).json(arrival);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
