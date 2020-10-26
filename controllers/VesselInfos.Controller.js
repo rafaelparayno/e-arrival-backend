@@ -129,7 +129,7 @@ module.exports = {
 
   getBasicVesselInfo: async (req, res) => {
     try {
-      vessel = await VesselInfo.findOne({
+      const vessel = await VesselInfo.findOne({
         where: {
           basic_info_id: req.params.id,
         },

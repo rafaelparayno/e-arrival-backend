@@ -5,6 +5,8 @@ const auth = require("../middleware/auth");
 
 router.get("/", BookingController.getAllBooking);
 
+router.get("/basic/:id", BookingController.getBasicBooking);
+
 router.post("/", BookingController.addBooking);
 
 // router.post(

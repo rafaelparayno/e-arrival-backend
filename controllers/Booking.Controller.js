@@ -45,6 +45,21 @@ module.exports = {
       res.status(500).send();
     }
   },
+  getBasicBooking: async (req, res) => {
+    try {
+      const booking = await Booking.findOne({
+        where: {
+          basic_info_id: req.params.id,
+        },
+      });
+      if (booking == null)
+        return res.status(404).json({ message: "cannot find booking" });
+
+      res.status(201).json(vessel);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
   // getVesselBooking: async (req, res) => {
   //   const { shipping_id } = req.body;
 

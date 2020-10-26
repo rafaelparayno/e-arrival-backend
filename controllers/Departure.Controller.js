@@ -12,6 +12,22 @@ module.exports = {
       res.status(500).send();
     }
   },
+  getBasicDeparture: async (req, res) => {
+    try {
+      const departure = await Departure.findOne({
+        where: {
+          basic_info_id: req.params.id,
+        },
+      });
+      if (departure == null)
+        return res.status(404).json({ message: "cannot find departure" });
+
+      res.status(201).json(vessel);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
+
   // getVesselDeparture: async (req, res) => {
   //   const { shipping_id } = req.body;
 

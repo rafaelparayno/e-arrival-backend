@@ -45,7 +45,7 @@ module.exports = {
   },
   getBasicArrival: async (req, res) => {
     try {
-      arrival = await Arrival.findOne({
+      const arrival = await Arrival.findOne({
         where: {
           basic_info_id: req.params.id,
         },

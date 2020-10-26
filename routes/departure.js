@@ -6,6 +6,8 @@ const auth = require("../middleware/auth");
 
 router.get("/", DepartureController.getAllDeparture);
 
+router.get("/basic/:id", DepartureController.getBasicDeparture);
+
 router.post("/", DepartureController.addDeparture);
 
 // router.post("/vessel", DepartureController.getVesselDeparture);

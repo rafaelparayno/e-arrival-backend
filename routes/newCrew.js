@@ -6,6 +6,8 @@ const auth = require("../middleware/auth");
 
 router.get("/", NewCrewController.getAllCrew);
 
+router.get("/basic/:id", NewCrewController.getBasicCrew);
+
 router.post("/", NewCrewController.addCrew);
 
 // router.post("/vessel", auth.authenticateToken, CrewController.getVesselCrew);
