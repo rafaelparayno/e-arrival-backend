@@ -150,7 +150,7 @@ Content-Type:  application/json
 ###
 
 
-GET http://localhost:5000/vesselinfo/basic/16
+GET http://199.241.138.64/vesselinfo/basic/16
 Content-Type:  application/json
 
 #  {

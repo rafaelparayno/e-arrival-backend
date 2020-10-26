@@ -9,6 +9,8 @@ router.get(
   ArrivalController.getAllArival
 );
 
+router.get("/basic/:id", ArrivalController.getBasicArrival);
+
 router.post("/", ArrivalController.addArrival);
 
 // router.post(

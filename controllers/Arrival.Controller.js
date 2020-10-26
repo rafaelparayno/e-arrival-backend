@@ -43,6 +43,21 @@ module.exports = {
       res.status(500).send({ message: err.message });
     }
   },
+  getBasicArrival: async (req, res) => {
+    try {
+      arrival = await Arrival.findOne({
+        where: {
+          basic_info_id: req.params.id,
+        },
+      });
+      if (arrival == null)
+        return res.status(404).json({ message: "cannot find arrival" });
+
+      res.status(201).json(vessel);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
   // getArrivalToday: async (req, res) => {
   //   const { date } = req.body;
 
