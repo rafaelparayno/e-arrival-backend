@@ -66,6 +66,10 @@ const BasicInfo = db.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    e_add: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     timestamps: false,

@@ -55,6 +55,7 @@ module.exports = {
       vehicle_plate_no,
       driver_name,
       driver_cno,
+      e_add,
     } = req.body;
 
     try {
@@ -73,6 +74,7 @@ module.exports = {
         vehicle_plate_no,
         driver_name,
         driver_cno,
+        e_add,
       });
 
       res.status(201).json(newBasicInfo);
