@@ -110,7 +110,6 @@ module.exports = {
       if (await bcrpyt.compare(req.body.password, user.password)) {
         const accessToken = generateAccessToken({ username: user.username });
         const refreshToken = generateRefreshToken({ username: user.username });
-        const { fullname } = user;
 
         client.SETEX(user.username, 1800 * 60, refreshToken, (err, reply) => {
           if (err) return res.status(500).send({ message: err.message });

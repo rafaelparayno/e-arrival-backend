@@ -47,7 +47,7 @@ const Arrival = db.define(
       allowNull: false,
     },
     volume: {
-      field: "cargoes_loaded",
+      field: "volume",
       type: DataTypes.FLOAT,
       allowNull: false,
     },
