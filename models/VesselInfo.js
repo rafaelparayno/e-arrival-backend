@@ -49,7 +49,7 @@ const VesselInfo = db.define(
       allowNull: false,
     },
     departure_last_port: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },
