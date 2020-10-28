@@ -24,6 +24,7 @@ module.exports = {
       purpose,
       discharged,
       loaded,
+      volume,
     } = req.body;
 
     try {
@@ -36,6 +37,7 @@ module.exports = {
         purpose,
         discharged,
         loaded,
+        volume,
       });
 
       res.status(201).json(newArrival);
